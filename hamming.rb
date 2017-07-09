@@ -17,3 +17,19 @@ end
 module BookKeeping
    VERSION = 3
 end
+
+#OR
+
+class Hamming
+  def self.compute(initial, replica)
+
+    raise ArgumentError if initial.length != replica.length
+
+    hamming_distance = 0
+    for nucleotide_index in 0...initial.length
+      hamming_distance += 1 if initial[nucleotide_index] != replica[nucleotide_index]
+    end
+
+    hamming_distance
+  end
+end
