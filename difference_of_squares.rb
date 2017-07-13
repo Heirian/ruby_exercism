@@ -1,3 +1,4 @@
+# Square custom class
 class Squares
   def initialize(number)
     @number_list = 0..number
@@ -5,7 +6,7 @@ class Squares
 
   def square_of_sum
     sum = 0
-    for num in @number_list
+    @number_list.each do |num|
       sum += num
     end
     sum**2
@@ -13,8 +14,8 @@ class Squares
 
   def sum_of_squares
     sum_square = 0
-    @number_list.each do |x|
-      sum_square += x ** 2
+    @number_list.each do |num|
+      sum_square += num**2
     end
     sum_square
   end
