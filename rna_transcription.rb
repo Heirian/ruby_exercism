@@ -1,19 +1,11 @@
+# dna to rna
 class Complement
   def self.of_dna(dna)
+    converter_keys = { G: 'C', C: 'G', T: 'A', A: 'U' }
     rna = ''
-    for nucleotide in 0...dna.length
-      case
-        when dna[nucleotide] == 'G'
-          rna << 'C'
-        when dna[nucleotide] == 'C'
-          rna << 'G'
-        when dna[nucleotide] == 'T'
-          rna << 'A'
-        when dna[nucleotide] == 'A'
-          rna << 'U'
-        else
-          return ''
-      end
+    dna.each_char do |nucleotide|
+      return '' unless converter_keys.key?(nucleotide.to_sym)
+      rna << converter_keys[nucleotide.to_sym]
     end
     rna
   end
