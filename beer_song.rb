@@ -11,12 +11,13 @@ class BeerSong
   private
 
   def metre(v)
-      if v > 0
+      case v
+      when 1..99
         <<~TEXT
         #{v} bottle#{'s' unless v == 1} of beer on the wall, #{v} bottle#{'s' unless v == 1} of beer.
         Take #{ v == 1 ? 'it' : 'one'} down and pass it around, #{ v == 1 ? 'no more' : v - 1} bottle#{'s' unless v == 2} of beer on the wall.
         TEXT
-      elsif v == 0
+      when 0
         <<~TEXT
         No more bottles of beer on the wall, no more bottles of beer.
         Go to the store and buy some more, 99 bottles of beer on the wall.
