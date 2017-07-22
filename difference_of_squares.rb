@@ -5,19 +5,11 @@ class Squares
   end
 
   def square_of_sum
-    sum = 0
-    @number_list.each do |num|
-      sum += num
-    end
-    sum**2
+    @number_list.reduce(:+)**2
   end
 
   def sum_of_squares
-    sum_square = 0
-    @number_list.each do |num|
-      sum_square += num**2
-    end
-    sum_square
+    @number_list.map { |num| num**2 }.reduce(:+)
   end
 
   def difference
