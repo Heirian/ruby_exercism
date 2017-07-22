@@ -1,17 +1,21 @@
 # custom class sum of
 class SumOfMultiples
-  def initialize(*numbers)
-    @numbers = Array.new(numbers)
+  def initialize(*divisors)
+    @divisors = divisors
   end
 
   def to(limit)
-    multiples = []
-    @numbers.each do |index|
-      1.upto(limit - 1) do |value|
-        multiples << value if (value % index).zero?
+    sum_of(limit)
+  end
+
+  private
+
+  def sum_of(limit)
+    @divisors.to_a.each.with_object([]) do |divisor, multiples|
+      1.upto(limit - 1) do |number|
+        multiples << number if (number % divisor).zero?
       end
-    end
-    multiples.uniq.reduce(0, :+)
+    end.uniq.reduce(0, :+)
   end
 end
 
