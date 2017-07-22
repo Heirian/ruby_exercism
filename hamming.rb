@@ -1,17 +1,10 @@
-# the distance of a DNA to your replica
-class Hamming
-  def self.compute(original, mutation)
-    warning = 'The strands must have the same length'
-    raise ArgumentError, warning if original.length != mutation.length
-    hamming_distance = 0
-    paired_strands = original.chars.zip(mutation.chars)
-    paired_strands.count do |(initial, replica)|
-      hamming_distance += 1 unless initial == replica
-    end
-    hamming_distance
+# custom Extract-Transform-Load class
+class ETL
+  def self.transform(old)
+    old.each_with_object({}) { |(k, v), h| v.map { |c| h[c.downcase] = k } }
   end
 end
 
 module BookKeeping
-  VERSION = 3
+  VERSION = 1
 end
