@@ -2,11 +2,7 @@
 class Array
   def accumulate
     return to_enum(:accumulate) unless block_given?
-    output = []
-    each do |value|
-      output << yield(value)
-    end
-    output
+    each.with_object([]) { |value, output| output << yield(value) }
   end
 end
 
